@@ -2,6 +2,7 @@
 
 ## Installing dependencies
 pip install django-crispy-forms
+pip install onemapsg
 
 ## Running the server
 py manage.py runserver
