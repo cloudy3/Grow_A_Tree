@@ -4,11 +4,11 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-Hi {{ user.username }}!
+Welcome {{ user.username }}!
 
 <html>
   <head>
-    <title>OneMap2 XYZ (Night)</title>
+    <title>OneMap2 XYZ (Default)</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css"
@@ -24,7 +24,7 @@ Hi {{ user.username }}!
     var map = L.map("mapdiv").setView([center.x, center.y], 12);
 
     var basemap = L.tileLayer(
-      "https://maps-{s}.onemap.sg/v3/Night/{z}/{x}/{y}.png",
+      "https://maps-{s}.onemap.sg/v3/Default/{z}/{x}/{y}.png",
       {
         detectRetina: true,
         maxZoom: 18,
@@ -59,7 +59,8 @@ Hi {{ user.username }}!
 </html>
 
 {% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a>
+<meta http-equiv="REFRESH" content="0;url={% url 'login' %}">
+  {% comment %} <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a> {% endcomment %}
 {% endif %}
 {% endblock %}
