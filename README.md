@@ -7,6 +7,6 @@ pip install django-crispy-forms
 py manage.py runserver
 
 ## Superuser account (http://127.0.0.1:8000/admin/)
-username: admin
-email: admin@example.com
-password: 123456
+- username: admin
+- email: admin@example.com
+- password: 123456
