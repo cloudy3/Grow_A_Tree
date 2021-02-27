@@ -1,6 +1,8 @@
 {% extends 'main/base.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}
+Home
+{% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
@@ -17,7 +19,7 @@ Welcome {{ user.username }}!
   </head>
   <body>
     <h1>Singapore Map</h1>
-    <div id="mapdiv" style="height: 800px"></div>
+    <div id="mapdiv" style="height: 500px"></div>
   </body>
   <script>
     var center = L.bounds([1.56073, 104.11475], [1.16, 103.502]).getCenter();

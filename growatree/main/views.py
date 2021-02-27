@@ -7,6 +7,10 @@ def home(response):
     return render(response, "main/home.html", {})
 
 
+def map(response):
+    return render(response, "main/map.html", {})
+
+
 Client = OneMapClient("ENTER_EMAIL", "ENTER_PASSWORD")
 
 
