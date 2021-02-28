@@ -1,12 +1,52 @@
-{% extends 'main/base.html' %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Grow A Tree</title>
 
-{% block title %}
-Home
-{% endblock %}
+    <style type="text/css">
+      /* Set the size of the div element that contains the map */
+      h2.header{
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
 
-{% block content %}
-<div id="map"></div>
-<script async
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnZtv1xAxEgTHcme4vJTF2SBU0f06FmqQ&callback=initMap">
-</script>
-{% endblock content %}
+      #map {
+        margin-left: auto;
+        margin-right: auto;
+        height: 500px;
+        /* The height is 400 pixels */
+        width: 80%;
+        /* The width is the width of the web page */
+      }
+    </style>
+    <script>
+      // Initialize and add the map
+      function initMap() {
+        // The location of Singapore
+        const singapore = { lat: 1.3667, lng: 103.8 };
+        // The map, centered at Singapore
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 12,
+          center: singapore,
+        });
+        // The marker, positioned at Uluru
+        const marker = new google.maps.Marker({
+          position: singapore,
+          map: map,
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <h2 class="header">Select a Recycling Pin</h2>
+    <!--The div element for the map -->
+    <div id="map"></div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnZtv1xAxEgTHcme4vJTF2SBU0f06FmqQ&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
+  </body>
+</html>
