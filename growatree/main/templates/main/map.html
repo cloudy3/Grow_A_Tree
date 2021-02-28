@@ -5,11 +5,8 @@ Home
 {% endblock %}
 
 {% block content %}
-<iframe
-  width="1000"
-  height="600"
-  src="https://data.gov.sg/dataset/e-waste-recycling/resource/95b95773-8c29-4a32-a9e1-461e622bf092/view/30a9e8b2-fd0e-4083-ba87-8aa51a4f0200"
-  frameborder="0"
->
-</iframe>
+<div id="map"></div>
+<script async
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnZtv1xAxEgTHcme4vJTF2SBU0f06FmqQ&callback=initMap">
+</script>
 {% endblock content %}
