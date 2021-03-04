@@ -23,21 +23,21 @@ function initMap() {
     center: { lat: 1.3667, lng: 103.8 },
   });
 
-  var kmlLayer = new google.maps.KmlLayer(src, {
-    suppressInfoWindows: true,
-    // preserveViewport: false,
-    map: map,
-  });
+  // var kmlLayer = new google.maps.KmlLayer(src, {
+  //   suppressInfoWindows: true,
+  //   // preserveViewport: false,
+  //   map: map,
+  // });
 
-  kmlLayer.addListener('click', function(kmlEvent) {
-    var text = kmlEvent.featureData.description;
-    showInContentWindow(text);
-  });
+  // kmlLayer.addListener('click', function(kmlEvent) {
+  //   var text = kmlEvent.featureData.description;
+  //   showInContentWindow(text);
+  // });
 
-  function showInContentWindow(text) {
-    var sidediv = document.getElementById('content-window');
-    sidediv.innerHTML = text;
-  }
+  // function showInContentWindow(text) {
+  //   var sidediv = document.getElementById('content-window');
+  //   sidediv.innerHTML = text;
+  // }
 }
 
 /**
