@@ -1,52 +1,71 @@
 <!DOCTYPE html>
 <html>
   <head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{% static 'main/css/base.css' %}"
+      type="text/css"
+      media="screen"
+    />
     <title>Grow A Tree</title>
-
-    <style type="text/css">
-      /* Set the size of the div element that contains the map */
-      h2.header{
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      #map {
-        margin-left: auto;
-        margin-right: auto;
-        height: 500px;
-        /* The height is 400 pixels */
-        width: 80%;
-        /* The width is the width of the web page */
-      }
-    </style>
-    <script>
-      // Initialize and add the map
-      function initMap() {
-        // The location of Singapore
-        const singapore = { lat: 1.3667, lng: 103.8 };
-        // The map, centered at Singapore
-        const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 12,
-          center: singapore,
-        });
-        // The marker, positioned at Uluru
-        const marker = new google.maps.Marker({
-          position: singapore,
-          map: map,
-        });
-      }
-    </script>
+    <link
+      rel="stylesheet"
+      href="{% static 'main/css/map.css' %}"
+      type="text/css"
+    />
   </head>
-  <body>
-    <h2 class="header">Select a Recycling Pin</h2>
-    <!--The div element for the map -->
-    <div id="map"></div>
 
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+  <body>
+    <div id="content" name="content" class="main">
+      <div class="row justify-content-center">
+        <div class="col-8">
+          <h1 class="mt-2">Welcome to Grow A Tree!</h1>
+          <hr class="mt-0 mb-4" />
+        </div>
+      </div>
+    </div>
+
+    <h2 class="center">Select Recycling Pin</h2>
+
+    <form id="id_search_form">
+      <input
+        type="text"
+        id="id_term"
+        name="term"
+        placeholder="Enter a location"
+      />
+      <input type="submit" value="Search" />
+    </form>
+
+    <div id="map">
+      <h3 id="geolocation">Geolocating...</h3>
+    </div>
+
+    <!-- Must be before google maps include, as it contains initMap -->
+    <script type="text/javascript" src="{% static 'main/js/map.js' %}"></script>
+
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnZtv1xAxEgTHcme4vJTF2SBU0f06FmqQ&callback=initMap&libraries=&v=weekly"
       async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}&callback=initMap"
     ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"
+    ></script>
+
   </body>
 </html>
