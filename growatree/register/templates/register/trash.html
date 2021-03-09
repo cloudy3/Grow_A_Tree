@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    {% csrf_token %}
+    {% load crispy_forms_tags %}
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>recycling app test</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}" />
+  </head>
+
+  <body>
+    <div style="padding-top: 50px">
+      <div class="container" id="biglogo">
+        <div class="card" style="border-width: 0px">
+          <img
+            class="card-img-top w-100 d-block"
+            src="{% static 'img/growatree%20HD.jpg' %}"
+          />
+        </div>
+      </div>
+      <h1 class="text-center" style="padding: 42px 0px 0px; padding-top: 0">
+        Create Account
+      </h1>
+    </div>
+    <div class="container" style="width: 314px; height: 38px">
+      <div style="background: #d2d2d2; border-radius: 21px; height: 33px">
+        <input
+          type="text"
+          style="
+            background: rgba(0, 0, 0, 0);
+            border-width: 0px;
+            padding: 4px 2px;
+            width: 248.667px;
+            text-align: left;
+            margin-left: 19px;
+          "
+          placeholder="First Name"
+        />
+      </div>
+    </div>
+    <div class="container" style="width: 314px; height: 38px">
+      <div style="background: #d2d2d2; border-radius: 21px; height: 33px">
+        <input
+          type="text"
+          style="
+            background: rgba(0, 0, 0, 0);
+            border-width: 0px;
+            padding: 4px 2px;
+            width: 248.667px;
+            text-align: left;
+            margin-left: 19px;
+          "
+          placeholder="Last Name"
+        />
+      </div>
+    </div>
+    <div class="container" style="width: 314px; height: 38px">
+      <div style="background: #d2d2d2; border-radius: 21px; height: 33px">
+        <input
+          type="text"
+          style="
+            background: rgba(0, 0, 0, 0);
+            border-width: 0px;
+            padding: 4px 2px;
+            width: 248.667px;
+            text-align: left;
+            margin-left: 19px;
+          "
+          placeholder="E-mail"
+        />
+      </div>
+    </div>
+    <div class="container" style="width: 314px; height: 38px">
+      <div style="background: #d2d2d2; border-radius: 21px; height: 33px">
+        <input
+          type="text"
+          style="
+            background: rgba(0, 0, 0, 0);
+            border-width: 0px;
+            padding: 4px 2px;
+            width: 248.667px;
+            text-align: left;
+            margin-left: 19px;
+          "
+          placeholder="Password"
+        />
+      </div>
+    </div>
+    <div class="container" style="width: 314px; height: 38px">
+      <div style="background: #d2d2d2; border-radius: 21px; height: 33px">
+        <input
+          type="text"
+          style="
+            background: rgba(0, 0, 0, 0);
+            border-width: 0px;
+            padding: 4px 2px;
+            width: 248.667px;
+            text-align: left;
+            margin-left: 19px;
+          "
+          placeholder="Confirm Password"
+        />
+      </div>
+    </div>
+    <div class="container text-center" style="width: 314px; height: 38px">
+      <div></div>
+      <button
+        class="btn btn-success"
+        type="submit"
+        style="
+          height: 38px;
+          background: rgb(125, 221, 169);
+          color: rgb(0, 0, 0);
+          border-radius: 22px;
+          width: 284.5px;
+          margin-bottom: 100px;
+          margin-top: 20px;
+        "
+      >
+        Create Account
+      </button>
+      {% comment %}
+      <div class="form-group">
+        <form class="username"></form>
+        <form class="email"></form>
+        <form class="password1"></form>
+        <form class="password2"></form>
+      </div>
+      {% endcomment %}
+      <form method="POST" class="form-group">
+        {{ form|crispy }}
+        <p>Back to <a href="/login">login</a></p>
+        <button type="submit" class="btn btn-success">Register</button>
+      </form>
+    </div>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  </body>
+</html>

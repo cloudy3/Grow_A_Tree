@@ -38,12 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.gis',
+    # 'django.contrib.gis',
     'crispy_forms',
     'main.apps.MainConfig',
     'register.apps.RegisterConfig',
     'rest_framework',
-    'rest_framework_gis',
+    # 'rest_framework_gis',
 ]
 
 MIDDLEWARE = [
@@ -61,7 +61,7 @@ ROOT_URLCONF = 'growatree.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': os.path.join(BASE_DIR, 'templates'),
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,7 +131,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-# GDAL config for heroku
-if 'GEOS_LIBRARY_PATH' in os.environ:
-    GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH')
-    GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH')
+# # GDAL config for heroku
+# if 'GEOS_LIBRARY_PATH' in os.environ:
+#     GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH')
+#     GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH')
