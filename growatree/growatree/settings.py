@@ -41,9 +41,11 @@ INSTALLED_APPS = [
     # 'django.contrib.gis',
     'crispy_forms',
     'main.apps.MainConfig',
-    'register.apps.RegisterConfig',
+    # 'register.apps.RegisterConfig',
     'rest_framework',
     # 'rest_framework_gis',
+    'database.apps.DatabaseConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -126,10 +128,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'database_home'
+LOGIN_URL = 'login'
+
+# LOGIN_REDIRECT_URL = '/'
+# LOGOUT_REDIRECT_URL = '/'
 
 # # GDAL config for heroku
 # if 'GEOS_LIBRARY_PATH' in os.environ:

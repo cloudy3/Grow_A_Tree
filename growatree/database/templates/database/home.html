@@ -1,0 +1,13 @@
+{% extends "database/base.html" %}
+{% block content %}
+	<h1>Database Home Page</h1>
+	<h2>Recycling Info</h2>
+	{% for item in recyclingInfo %}
+		<p>Recycling Type: {{ item.recyclingType }}</p>
+		<p>Recycling Weight: {{ item.recyclingWeight }}</p>
+		<p>Date: {{ item.date|date:"d F Y, G:i" }}</p>
+		<p>Badge: {{ item.badge }}</p>
+		<p>Impact: {{ item.impact }}</p>
+		<p>Tree: {{ item.tree }}</p>
+	{% endfor %}
+{% endblock content %}
