@@ -19,69 +19,43 @@ var defaultPosition = {
 };
 
 function initMap() {
-  var map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 12,
-    center: { lat: 1.3667, lng: 103.8 },
-  });
-
   // Get user's location
-  x = navigator.geolocation;
+  var x = navigator.geolocation;
   x.getCurrentPosition(success, failure);
 
   function success(position) {
+    console.log("\n\n\nLoaded Successfully!")
+
     var userLat = position.coords.latitude;
     var userLong = position.coords.longitude;
 
     var coords = new google.maps.LatLng(userLat, userLong);
 
     var mapOptions = {
-      zoom: 9,
+      zoom: 12,
       center: coords,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
     };
+
+    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+    // Adds all the markers from data.gov
+    var kmlLayer = new google.maps.KmlLayer(src, {
+      suppressInfoWindows: true,
+      // preserveViewport: false,
+      map: map,
+    });
+
+    // Listens when the user clicks on the marker
+    kmlLayer.addListener("click", function (kmlEvent) {
+      var text = kmlEvent.featureData.description;
+      showInContentWindow(text);
+    });
+
+    function showInContentWindow(text) {
+      var sidediv = document.getElementById("content-window");
+      sidediv.innerHTML = text;
+    }
   }
 
-  function failure() {}
-
-  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-  // Adds all the markers from data.gov
-  var kmlLayer = new google.maps.KmlLayer(src, {
-    suppressInfoWindows: true,
-    // preserveViewport: false,
-    map: map,
-  });
-
-  kmlLayer.addListener("click", function (kmlEvent) {
-    var text = kmlEvent.featureData.description;
-    showInContentWindow(text);
-  });
-
-  function showInContentWindow(text) {
-    var sidediv = document.getElementById("content-window");
-    sidediv.innerHTML = text;
-  }
+  function failure() {console.log("\n\n\nFailed to load!")}
 }
-
-/**
-x = navigator.geolocation;
-x.getCurrentPosition(success, failure);
-
-function success(position) {
-  var userLat = position.coords.latitude;
-  var userLong = position.coords.longitude;
-
-  var coords = new google.maps.LatLng(userLat, userLong);
-
-  var mapOptions = {
-    zoom:9,
-    center: coords,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  }
-
-  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  var marker = new google.maps.Marker({map:map, position:coords})
-}
-
-function failure() {}
-**/
