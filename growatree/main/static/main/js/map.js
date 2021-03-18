@@ -18,13 +18,14 @@ var defaultPosition = {
   },
 };
 
+// Initialises Google Map
 function initMap() {
   // Get user's location
   var x = navigator.geolocation;
   x.getCurrentPosition(success, failure);
 
   function success(position) {
-    console.log("\n\n\nLoaded Successfully!")
+    console.log("\n\n\nLoaded Successfully!");
 
     var userLat = position.coords.latitude;
     var userLong = position.coords.longitude;
@@ -40,22 +41,47 @@ function initMap() {
 
     // Adds all the markers from data.gov
     var kmlLayer = new google.maps.KmlLayer(src, {
-      suppressInfoWindows: true,
+      suppressInfoWindows: false,
       // preserveViewport: false,
       map: map,
     });
 
-    // Listens when the user clicks on the marker
-    kmlLayer.addListener("click", function (kmlEvent) {
-      var text = kmlEvent.featureData.description;
-      showInContentWindow(text);
-    });
+    const descriptions = "hi";
 
-    function showInContentWindow(text) {
-      var sidediv = document.getElementById("content-window");
-      sidediv.innerHTML = text;
+    // Attaches info window to all the markers
+    for (map.marker in map.markers) {
+      console.log("Attaching marker!");
+      attachDescription(marker, descriptions);
     }
   }
 
-  function failure() {console.log("\n\n\nFailed to load!")}
+  // If map fails to load
+  function failure() {
+    console.log("\n\n\nFailed to load!");
+  }
+
+  // Attaches an info window to a marker with the provided message.
+  // When clicked, opens info window.
+  function attachDescription(marker, description) {
+    const infowindow = new google.maps.InfoWindow({
+      content: description,
+    });
+    marker.addListener("click", () => {
+      console.log("I am clicked!");
+      map.setZoom(9);
+      map.setCenter(marker.getPosition());
+      infowindow.open(marker.get("map"), marker);
+    });
+  }
 }
+
+// // Listens when the user clicks on the marker
+// kmlLayer.addListener("click", function (kmlEvent) {
+//   var text = kmlEvent.featureData.description;
+//   showInContentWindow(text);
+// });
+
+// function showInContentWindow(text) {
+//   var sidediv = document.getElementById("content-window");
+//   sidediv.innerHTML = text;
+// }
