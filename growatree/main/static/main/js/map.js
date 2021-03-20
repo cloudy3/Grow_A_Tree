@@ -33,7 +33,7 @@ function initMap() {
     var coords = new google.maps.LatLng(userLat, userLong);
 
     var mapOptions = {
-      zoom: 12,
+      zoom: 14,
       center: coords,
     };
 
@@ -42,46 +42,28 @@ function initMap() {
     // Adds all the markers from data.gov
     var kmlLayer = new google.maps.KmlLayer(src, {
       suppressInfoWindows: false,
-      // preserveViewport: false,
+      preserveViewport: true,
       map: map,
     });
 
-    const descriptions = "hi";
+    kmlLayer.addListener('click', function(kmlEvent) {
+      // Access the description of each marker
+      var text = kmlEvent.featureData.description;
 
-    // Attaches info window to all the markers
-    for (map.marker in map.markers) {
-      console.log("Attaching marker!");
-      attachDescription(marker, descriptions);
-    }
+      // Tags to be queried
+      const BUILDING = "<th>ADDRESSBUILDINGNAME</th>"
+      const BLOCK = "<th>ADDRESSBLOCKHOUSENUMBER</th>"
+
+      // Index of Location Name
+      const startIndex = text.search(BUILDING);
+      const endIndex = text.search(BLOCK);
+      var address = text.slice(startIndex+32, endIndex-27);
+      console.log(address);
+    });
   }
 
   // If map fails to load
   function failure() {
     console.log("\n\n\nFailed to load!");
   }
-
-  // Attaches an info window to a marker with the provided message.
-  // When clicked, opens info window.
-  function attachDescription(marker, description) {
-    const infowindow = new google.maps.InfoWindow({
-      content: description,
-    });
-    marker.addListener("click", () => {
-      console.log("I am clicked!");
-      map.setZoom(9);
-      map.setCenter(marker.getPosition());
-      infowindow.open(marker.get("map"), marker);
-    });
-  }
 }
-
-// // Listens when the user clicks on the marker
-// kmlLayer.addListener("click", function (kmlEvent) {
-//   var text = kmlEvent.featureData.description;
-//   showInContentWindow(text);
-// });
-
-// function showInContentWindow(text) {
-//   var sidediv = document.getElementById("content-window");
-//   sidediv.innerHTML = text;
-// }
