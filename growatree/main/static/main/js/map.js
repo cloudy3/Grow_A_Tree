@@ -51,6 +51,15 @@ function initMap() {
 
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
+    // Add user's location as a marker
+    const image =
+    "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+    const beachMarker = new google.maps.Marker({
+    position: { lat: userLat, lng: userLong },
+    map,
+    icon: image,
+    });
+
     // Adds all the markers from data.gov
     var kmlLayer = new google.maps.KmlLayer(src, {
       suppressInfoWindows: false,
@@ -58,19 +67,20 @@ function initMap() {
       map: map,
     });
 
-    kmlLayer.addListener('click', function(kmlEvent) {
+    kmlLayer.addListener("click", function (kmlEvent) {
       // Access the description of each marker
       var text = kmlEvent.featureData.description;
 
       // Tags to be queried
-      const BUILDING = "<th>ADDRESSBUILDINGNAME</th>"
-      const BLOCK = "<th>ADDRESSBLOCKHOUSENUMBER</th>"
+      const BUILDING = "<th>ADDRESSBUILDINGNAME</th>";
+      const BLOCK = "<th>ADDRESSBLOCKHOUSENUMBER</th>";
 
       // Index of Location Name
       const startIndex = text.search(BUILDING);
       const endIndex = text.search(BLOCK);
-      var address = text.slice(startIndex+32, endIndex-27);
-      console.log(address);
+      var location = text.slice(startIndex + 32, endIndex - 27);
+      console.log(location);
+      // updateButtons(location);
     });
   }
 
@@ -78,4 +88,10 @@ function initMap() {
   function failure() {
     console.log("\n\n\nFailed to load!");
   }
+}
+
+// Updates Button Text to be the Location name
+function updateButtons(location) {
+  var locationText = document.getElementById("myButton1");
+  locationText.value = location;
 }
