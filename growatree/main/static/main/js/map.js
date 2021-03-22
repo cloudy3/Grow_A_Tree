@@ -7,8 +7,6 @@ var markers = [];
 var GOOGLE_MAPS_API_KEY = "AIzaSyBnZtv1xAxEgTHcme4vJTF2SBU0f06FmqQ";
 
 var src = "https://geo.data.gov.sg/ewaste/2021/02/19/kml/ewaste.kml";
-var cash_for_trash_src =
-  "https://geo.data.gov.sg/cashfortrash/2019/02/27/kml/cashfortrash.kml";
 
 // Defaults to centre of Singapore
 var defaultPosition = {
@@ -17,6 +15,20 @@ var defaultPosition = {
     longitude: -79.3745125,
   },
 };
+
+// Switches to E-Waste data after user clicks on E-waste button
+function eWaste() {
+  src = "https://geo.data.gov.sg/ewaste/2021/02/19/kml/ewaste.kml";
+  console.log("Switched to E-Waste data!");
+  initMap();
+}
+
+// Switches to Cash-For-Trash data after user clicks on Cash-For-Trash button
+function cashForTrash() {
+  src = "https://geo.data.gov.sg/cashfortrash/2019/02/27/kml/cashfortrash.kml";
+  console.log("Switched to Cash-For-Trash data!");
+  initMap();
+}
 
 // Initialises Google Map
 function initMap() {

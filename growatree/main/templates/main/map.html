@@ -25,6 +25,8 @@
       href="{% static 'main/css/map.css' %}"
       type="text/css"
     />
+
+    <script type = "text/javascript" src="{% static "main/js/map.js"%}"></script>
   </head>
 
   <body>
@@ -39,15 +41,8 @@
 
     <h2 class="center">Select Recycling Pin</h2>
 
-    <form id="id_search_form">
-      <input
-        type="text"
-        id="id_term"
-        name="term"
-        placeholder="Enter a location"
-      />
-      <input type="submit" value="Search" />
-    </form>
+    <button onclick="eWaste()">E-Waste</button>
+    <button onclick="cashForTrash()">Cash For Trash</button>
 
     <div id="map">
       <h3 id="geolocation">Geolocating...</h3>
@@ -67,9 +62,8 @@
       integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
       crossorigin="anonymous"
     ></script>
-
   </body>
   {% else %}
-  <meta http-equiv="REFRESH" content="0;url={% url 'login' %}">
+  <meta http-equiv="REFRESH" content="0;url={% url 'login' %}" />
   {% endif %}
 </html>
