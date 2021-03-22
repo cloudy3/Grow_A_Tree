@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     {% load static %}
@@ -25,47 +25,70 @@
       href="{% static 'main/css/map.css' %}"
       type="text/css"
     />
-
-    <script type = "text/javascript" src="{% static "main/js/map.js"%}"></script>
   </head>
 
   <body>
-    <div id="content" name="content" class="main">
-      <div class="row justify-content-center">
-        <div class="col-8">
-          <h1 class="mt-2">Welcome to Grow A Tree!</h1>
-          <hr class="mt-0 mb-4" />
-        </div>
+      <div id="content" name="content" class="main">
+          <div class="row justify-content-center">
+              <div class="col-8">
+                  <h1 class="mt-2">Welcome to Grow A Tree!</h1>
+                  <hr class="mt-0 mb-4" />
+              </div>
+          </div>
       </div>
-    </div>
 
-    <h2 class="center">Select Recycling Pin</h2>
 
-    <button onclick="eWaste()">E-Waste</button>
-    <button onclick="cashForTrash()">Cash For Trash</button>
-    <button onclick="lightingWaste()">Lighting-Waste</button>
-    <button onclick="secondHandGoods()">Second Hand Goods</button>
+      <div class="container" padding-bottom: 20px ;>
+          <div class="row">
+              <div class="col-sm-11">
+                  <div><a class="btn btn-primary" href="{% url 'profile' %}" role="button">My Profile</a></div>
+              </div>
+              <div class="col-sm-1">
+                  <div><a class="btn btn-primary" href="{% url 'logout' %}" role="button">Logout</a></div>
+              </div>
+          </div>
+      </div>
 
-    <div id="map">
-      <h3 id="geolocation">Geolocating...</h3>
-    </div>
+      <div class="container">
+          <div class="row">
+              <div class="col-sm-3">
+                  
+                  <div>
+                      <p style="margin-top: 23px;font-size: 23px;margin-bottom: 2px;">Current Selection</p>
+                      <a class="btn btn-primary btn-block text-center" role="button" style="text-align: left;padding-top: 0;font-size: 16px;padding-bottom: 0;padding-right: 150px;border-right-width: -51px;border-right-color: rgb(0,0,0);margin-top: 0;margin-bottom: 0;" href="Recyclingoptions.html">Result 1</a>
+                      <button class="btn btn-primary btn-block text-center" type="button" style="text-align: left;padding-top: 0;font-size: 16px;padding-bottom: 0;padding-right: 150px;border-right-width: -51px;border-right-color: rgb(0,0,0);margin-top: 0;margin-bottom: 0;">Result 2</button>
+                  </div>
 
-    <!-- Must be before google maps include, as it contains initMap -->
-    <script type="text/javascript" src="{% static 'main/js/map.js' %}"></script>
+              </div>
 
-    <script
-      async
-      defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtzILtbVxoKMk-569gibMH8QSdogQHq6k&callback=initMap"
-    ></script>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-      crossorigin="anonymous"
-    ></script>
+
+              <div class="col-sm-9">
+                  <h2 class="center">Select Recycling Pin</h2>
+                  <div id="map">
+                      <h3 id="geolocation">Geolocating...</h3>
+                  </div>
+
+                  <!-- Must be before google maps include, as it contains initMap -->
+                  <script type="text/javascript" src="{% static 'main/js/map.js' %}"></script>
+
+                  <script async
+                          defer
+                          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtzILtbVxoKMk-569gibMH8QSdogQHq6k&callback=initMap"></script>
+
+                  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+                          integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+                          crossorigin="anonymous"></script>
+              </div>
+          </div>
+      </div>
+
+
+
+
+
   </body>
   {% else %}
-  <meta http-equiv="REFRESH" content="0;url={% url 'login' %}" />
+  <meta http-equiv="REFRESH" content="0;url={% url 'login' %}">
   {% endif %}
 </html>

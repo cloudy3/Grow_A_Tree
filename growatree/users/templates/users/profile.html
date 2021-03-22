@@ -7,17 +7,68 @@ Profile
 {% load crispy_forms_tags %}
 
 {% block content %}
-	<div class="content-section">
-		<div class="media">
-			<img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-			<div class="media-body">
-				<h2 class="account-heading">
+<div class="container" style="padding-bottom: 20px;">
+	<div class="row">
+		<div class="col-sm-11">
+			<!-- change this URL to link back to map page-->
+			<div><a class="btn btn-primary" href="{% url 'map' %}" role="button">< Back to Map</a></div>
+		</div>
+		<div class="col-sm-1">
+			<div><a class="btn btn-primary" href="{% url 'logout' %}" role="button">Logout</a></div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-3">
+
+			<div>
+				<h2 class="account-heading">My Profile</h2>
+				<img class="img-fluid" src="{{ user.profile.image.url }}">
+				<p style="margin-top: 23px;font-size: 23px;margin-bottom: 2px;">
 					{{ user.username }}
-				</h2>
+				</p>
 				<p class="text-sceondary">
 					{{ user.email }}
 				</p>
+				<a class="btn btn-primary btn-block text-center" role="button" style="text-align: left;padding-top: 0;font-size: 16px;padding-bottom: 0px;padding-right: 100px;background: rgb(162,162,162);margin-top: 0;margin-bottom: 0;">My Profile</a>
+				<a class="btn btn-primary btn-block text-center" role="button" style="text-align: left;padding-top: 0;font-size: 16px;padding-bottom: 0;padding-right: 50px;background: rgb(6, 126, 195);margin-top: 0;margin-bottom: 0;" href="Recyclingoptions.html">Recycling History</a>
+
 			</div>
+
+		</div>
+
+
+
+		<div class="col-sm-9">
+			<!--Insert the tree progress display here-->
+			<img class="img-fluid" src="{{ user.profile.image.url}}" style="max-height: 500px;">
 		</div>
 	</div>
+</div>
+
+<div class="container" style="padding-bottom: 20px;">
+	<div class="row">
+		<div class="col-sm-10">
+			</div>
+		<div class="col-sm-2">
+			<div><a class="btn btn-primary" href="{% url 'logout' %}" role="button">View Legend</a></div>
+		</div>
+	</div>
+</div>
+
+<div>
+	<p style="margin-top: 23px;font-size: 23px;margin-bottom: 2px;">
+		Estimated number of trees saved:
+	</p>
+
+	<!--Edit the variable to just display number of trees saved-->
+	<p style="margin-top: 0px;font-size: 23px;margin-bottom: 2px;">
+		{{ user.username }}
+	</p>
+	<h2 class="account-heading" style="margin-top: 10px; font-size: 30px; margin-bottom: 50px;">Badges</h2>
+</div>
+
 {% endblock content %}
