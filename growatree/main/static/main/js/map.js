@@ -3,6 +3,7 @@
 var map = null;
 var infowindow = null;
 var markers = [];
+var mapState = "ewaste";
 
 var GOOGLE_MAPS_API_KEY = "AIzaSyBnZtv1xAxEgTHcme4vJTF2SBU0f06FmqQ";
 
@@ -21,6 +22,7 @@ function eWaste() {
   src = "https://geo.data.gov.sg/ewaste/2021/02/19/kml/ewaste.kml";
   console.log("Switched to E-Waste data!");
   initMap();
+  mapState = "ewaste";
 }
 
 // Switches to Cash-For-Trash data after user clicks on Cash-For-Trash button
@@ -28,18 +30,22 @@ function cashForTrash() {
   src = "https://geo.data.gov.sg/cashfortrash/2019/02/27/kml/cashfortrash.kml";
   console.log("Switched to Cash-For-Trash data!");
   initMap();
+  mapState = "cashfortrash";
 }
 
 function lightingWaste() {
   src = "https://geo.data.gov.sg/lighting/2019/10/01/kml/lighting.kml";
   console.log("Switched to Lighting-Waste data!");
   initMap();
+  mapState = "lightingwaste";
 }
 
 function secondHandGoods() {
-  src = "https://geo.data.gov.sg/secondhandcollecn/2017/11/30/kml/secondhandcollecn.kml";
+  src =
+    "https://geo.data.gov.sg/secondhandcollecn/2017/11/30/kml/secondhandcollecn.kml";
   console.log("Switched to Second Hand Goods data!");
   initMap();
+  mapState = "secondhandgoods";
 }
 
 // Initialises Google Map
@@ -65,11 +71,11 @@ function initMap() {
 
     // Add user's location as a marker
     const image =
-    "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+      "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
     const userMarker = new google.maps.Marker({
-    position: { lat: userLat, lng: userLong },
-    map,
-    icon: image,
+      position: { lat: userLat, lng: userLong },
+      map,
+      icon: image,
     });
 
     // Adds all the markers from data.gov
@@ -86,11 +92,36 @@ function initMap() {
       // Tags to be queried
       const BUILDING = "<th>ADDRESSBUILDINGNAME</th>";
       const BLOCK = "<th>ADDRESSBLOCKHOUSENUMBER</th>";
+      const STREET = "<th>ADDRESSSTREETNAME</th>";
+      const POSTAL = "<th>ADDRESSPOSTALCODE</th>";
+      const UNIT = "<th>ADDRESSUNITNUMBER</th>";
 
       // Index of Location Name
-      const startIndex = text.search(BUILDING);
-      const endIndex = text.search(BLOCK);
-      var location = text.slice(startIndex + 32, endIndex - 27);
+      // TODO:Check if building name is ""
+      var startIndex;
+      var endIndex;
+      var location
+
+      if (mapState.localeCompare("ewaste") == 0) {
+        startIndex = text.search(BUILDING);
+        endIndex = text.search(BLOCK);
+        location = text.slice(startIndex + 32, endIndex - 27);
+      } else if (mapState.localeCompare("cashfortrash") == 0) {
+        startIndex = text.search(STREET);
+        endIndex = text.search(POSTAL);
+        location = text.slice(startIndex + 30, endIndex - 27);
+      } else if (mapState.localeCompare("lightingwaste") == 0) {
+        startIndex = text.search(BUILDING);
+        endIndex = text.search(UNIT);
+        location = text.slice(startIndex + 33, endIndex - 27);
+      } else if (mapState.localeCompare("secondhandgoods") == 0) {
+        startIndex = text.search(STREET);
+        endIndex = text.search(POSTAL);
+        location = text.slice(startIndex + 30, endIndex - 27);
+      } else {
+        location = "";
+        console.log("Error getting location of marker!");
+      }
       console.log(location);
       // updateButtons(location);
     });
