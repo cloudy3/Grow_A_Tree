@@ -30,6 +30,18 @@ function cashForTrash() {
   initMap();
 }
 
+function lightingWaste() {
+  src = "https://geo.data.gov.sg/lighting/2019/10/01/kml/lighting.kml";
+  console.log("Switched to Lighting-Waste data!");
+  initMap();
+}
+
+function secondHandGoods() {
+  src = "https://geo.data.gov.sg/secondhandcollecn/2017/11/30/kml/secondhandcollecn.kml";
+  console.log("Switched to Second Hand Goods data!");
+  initMap();
+}
+
 // Initialises Google Map
 function initMap() {
   // Get user's location
@@ -37,7 +49,7 @@ function initMap() {
   x.getCurrentPosition(success, failure);
 
   function success(position) {
-    console.log("\n\n\nLoaded Successfully!");
+    console.log("Loaded Successfully!");
 
     var userLat = position.coords.latitude;
     var userLong = position.coords.longitude;
@@ -54,7 +66,7 @@ function initMap() {
     // Add user's location as a marker
     const image =
     "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
-    const beachMarker = new google.maps.Marker({
+    const userMarker = new google.maps.Marker({
     position: { lat: userLat, lng: userLong },
     map,
     icon: image,
@@ -86,7 +98,7 @@ function initMap() {
 
   // If map fails to load
   function failure() {
-    console.log("\n\n\nFailed to load!");
+    console.log("Failed to load!");
   }
 }
 
