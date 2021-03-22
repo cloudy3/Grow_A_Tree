@@ -1,6 +1,3 @@
-# from django.contrib import admin
-# from django.urls import path, include
-# from register import views as v
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
@@ -8,12 +5,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from users import views as user_views
 
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-#     path('register/', v.register, name="register"),
-#     path('', include("main.urls")),
-#     path('', include("django.contrib.auth.urls")),
-# ]
 
 urlpatterns = [
     path('admin/', admin.site.urls),
