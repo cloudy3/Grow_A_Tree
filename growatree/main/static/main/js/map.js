@@ -97,7 +97,6 @@ function initMap() {
       const UNIT = "<th>ADDRESSUNITNUMBER</th>";
 
       // Index of Location Name
-      // TODO:Check if building name is ""
       var startIndex;
       var endIndex;
       var location;

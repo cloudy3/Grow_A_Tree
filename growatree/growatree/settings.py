@@ -41,11 +41,12 @@ INSTALLED_APPS = [
     # 'django.contrib.gis',
     'crispy_forms',
     'main.apps.MainConfig',
-    # 'register.apps.RegisterConfig',
     'rest_framework',
     # 'rest_framework_gis',
     'database.apps.DatabaseConfig',
     'users.apps.UsersConfig',
+    'recyclinghistorypage.apps.RecyclinghistorypageConfig',
+    'treeinterface.apps.TreeinterfaceConfig',
 ]
 
 MIDDLEWARE = [
