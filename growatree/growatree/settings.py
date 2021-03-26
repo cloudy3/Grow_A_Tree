@@ -38,15 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'django.contrib.gis',
     'crispy_forms',
     'main.apps.MainConfig',
     'rest_framework',
-    # 'rest_framework_gis',
     'database.apps.DatabaseConfig',
     'users.apps.UsersConfig',
     'recyclinghistorypage.apps.RecyclinghistorypageConfig',
     'treeinterface.apps.TreeinterfaceConfig',
+    # 'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -134,7 +133,7 @@ MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
-LOGIN_REDIRECT_URL = 'database_home'
+LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 
 # LOGIN_REDIRECT_URL = '/'

@@ -1,4 +1,4 @@
-{% extends "main/base.html" %}
+{% extends "database/base.html" %}
 
 {% block title %}
 Profile
@@ -10,10 +10,10 @@ Profile
 <div class="container" style="padding-bottom: 20px">
   <div class="row">
     <div class="col-sm-11">
-      <!-- change this URL to link back to map page-->
+      <!-- Links back to map page-->
       <div>
         <a class="btn btn-primary" href="{% url 'map' %}" role="button"
-          >< Back to Map</a
+          >Back to Map</a
         >
       </div>
     </div>
@@ -111,5 +111,27 @@ Profile
     Badges
   </h2>
 </div>
+
+{% comment %} Newly Added Code, Please help to integrate this {% endcomment %}
+<div class="content-section">
+		<div class="media">
+			<img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+			<div class="media-body">
+				<h2 class="account-heading">{{ user.username }}</h2>
+				<p class="text-secondary">{{ user.email }}</p>
+			</div>
+		</div>
+		<form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Edit Profile</legend>
+				{{ u_form|crispy }}
+				{{ p_form|crispy }}
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-outline-info" type="submit">Update</button>
+			</div>
+		</form>
+	</div>
 
 {% endblock content %}
