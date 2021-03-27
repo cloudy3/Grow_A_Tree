@@ -104,11 +104,11 @@ function initMap() {
       if (mapState.localeCompare("ewaste") == 0) {
         startIndex = text.search(BUILDING);
         endIndex = text.search(BLOCK);
-        location = text.slice(startIndex + 32, endIndex - 27);
+        location = text.slice(startIndex + 33, endIndex - 27);
       } else if (mapState.localeCompare("cashfortrash") == 0) {
         startIndex = text.search(STREET);
         endIndex = text.search(POSTAL);
-        location = text.slice(startIndex + 30, endIndex - 27);
+        location = text.slice(startIndex + 31, endIndex - 27);
       } else if (mapState.localeCompare("lightingwaste") == 0) {
         startIndex = text.search(BUILDING);
         endIndex = text.search(UNIT);
@@ -116,13 +116,14 @@ function initMap() {
       } else if (mapState.localeCompare("secondhandgoods") == 0) {
         startIndex = text.search(STREET);
         endIndex = text.search(POSTAL);
-        location = text.slice(startIndex + 30, endIndex - 27);
+        location = text.slice(startIndex + 31, endIndex - 27);
       } else {
         location = "";
         console.log("Error getting location of marker!");
       }
+      // Shows the Current Selection on the page
       console.log(location);
-      // updateButtons(location);
+      updateButtons(location);
     });
   }
 
@@ -134,6 +135,5 @@ function initMap() {
 
 // Updates Button Text to be the Location name
 function updateButtons(location) {
-  var locationText = document.getElementById("myButton1");
-  locationText.value = location;
+  document.getElementById('recycle').getElementsByTagName('p')[0].innerHTML = location;
 }

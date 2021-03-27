@@ -1,97 +1,112 @@
 {% extends "main/base.html" %}
+
 {% load static %}
-
-
 {% load crispy_forms_tags %}
 
 {% block content %}
 <div class="container" style="padding-bottom: 20px">
-    <div class="row">
-        <div class="col-sm-11">
-            <div>
-                <a class="btn btn-primary" href="{% url 'map' %}" role="button">< Back to Map</a>
-            </div>
-        </div>
-        <div class="col-sm-1">
-            <div>
-                <a class="btn btn-primary" href="{% url 'logout' %}" role="button">Logout</a>
-            </div>
-        </div>
+  <div class="row">
+    <div class="col-sm-11">
+      <div>
+        <a class="btn btn-primary" href="{% url 'map' %}" role="button"
+          >< Back to Map</a
+        >
+      </div>
     </div>
+    <div class="col-sm-1">
+      <div>
+        <a class="btn btn-primary" href="{% url 'logout' %}" role="button"
+          >Logout</a
+        >
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col-sm-3">
-            <div>
-                <h2 class="account-heading">My Profile</h2>
-                <img class="img-fluid" src="{{ user.profile.image.url }}" />
-                <p style="margin-top: 23px; font-size: 23px; margin-bottom: 2px">
-                    {{ user.username }}
-                </p>
-                <p class="text-sceondary">{{ user.email }}</p>
-                <a class="btn btn-primary btn-block text-center"
-                   role="button"
-                   style="
+  <div class="row">
+    <div class="col-sm-3">
+      <div>
+        <h2 class="account-heading">My Profile</h2>
+        <img class="img-fluid" src="{{ user.profile.image.url }}" />
+        <p style="margin-top: 23px; font-size: 23px; margin-bottom: 2px">
+          {{ user.username }}
+        </p>
+        <p class="text-sceondary">{{ user.email }}</p>
+        <a
+          class="btn btn-primary btn-block text-center"
+          role="button"
+          style="
             text-align: left;
             font-size: 16px;
             padding-right: 100px;
             background: rgb(162, 162, 162);
-          ">My Profile</a>
-                <a class="btn btn-primary btn-block text-center"
-                   role="button"
-                   style="
+          "
+          >My Profile</a
+        >
+        <a
+          class="btn btn-primary btn-block text-center"
+          role="button"
+          style="
             text-align: left;
             font-size: 16px;
             padding-right: 50px;
             background: rgb(6, 126, 195);
           "
-                   href="{% url 'recycling-history' %}">Recycling History</a>
+          href="{% url 'recycling-history' %}"
+          >Recycling History</a
+        >
 
-                <a class="btn btn-primary btn-block text-center"
-                   role="button"
-                   style="
+        <a
+          class="btn btn-primary btn-block text-center"
+          role="button"
+          style="
             text-align: left;
             font-size: 16px;
             padding-right: 80px;
             background: rgb(6, 126, 195);
             margin-bottom: 30px;
           "
-                   href="{% url 'tree-interface' %}">View Legend</a>
+          href="{% url 'tree-interface' %}"
+          >View Legend</a
+        >
 
-
-                <a class="btn btn-primary btn-block text-center"
-                   role="button"
-                   style=" text-align: left;
+        <a
+          class="btn btn-primary btn-block text-center"
+          role="button"
+          style="
+            text-align: left;
             font-size: 16px;
             padding-right: 95px;
-            background: rgb(6, 126, 195);"
-            <!--INSERT THE HREF STATIC HERE-->
-          Edit Profile</a>
-            </div>
-        </div>
-
-        <div class="col-sm-9">
-            <!--Insert the tree progress display here-->
-            <img class="img-fluid" src="{% static 'img/progress.PNG' %}" />
-        </div>
+            background: rgb(6, 126, 195);
+          "
+          <!--INSERT
+          THE
+          href
+          STATIC
+          HERE--
+        >
+          Edit Profile</a
+        >
+      </div>
     </div>
+
+    <div class="col-sm-9">
+      <!--Insert the tree progress display here-->
+      <img class="img-fluid" src="{% static 'img/progress.PNG' %}" />
+    </div>
+  </div>
 </div>
-
-
 
 <div>
-    <p style="margin-top: 23px; font-size: 23px; margin-bottom: 2px">
-        Estimated number of trees saved:
-    </p>
+  <p style="margin-top: 23px; font-size: 23px; margin-bottom: 2px">
+    Estimated number of trees saved:
+  </p>
 
-    <!--Edit the variable to just display number of trees saved-->
-    <p style="margin-top: 0px; font-size: 23px; margin-bottom: 50px">
-        {{ user.username }}
-    </p>
-
+  <!--Edit the variable to just display number of trees saved-->
+  <p style="margin-top: 0px; font-size: 23px; margin-bottom: 50px">
+    {{ user.username }}
+  </p>
 </div>
-
-
 
 {% endblock content %}
