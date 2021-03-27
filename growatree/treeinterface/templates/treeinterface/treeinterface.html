@@ -1,117 +1,93 @@
-{% extends "recyclinghistorypage/base.html" %}
+﻿{% extends "main/base.html" %}
+{% load static %}
+{% block title %}
+Profile
+{% endblock %}
+
+{% load crispy_forms_tags %}
 
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
-    />
-    <title>recycling app test</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css" />
-    <link rel="stylesheet" href="assets/css/untitled.css" />
-  </head>
 
-  <body>
-    <div></div>
-    <div>
-      <div class="container" id="mytreecon">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>recycling app test</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+</head>
+
+<body>
+    <div class="container" style="padding-bottom: 20px">
         <div class="row">
-          <div class="col" id="leftcolumn">
-            <a
-              href="mainmap.html"
-              style="
-                color: rgb(0, 0, 0);
-                font-size: 23px;
-                padding-top: 0px;
-                margin-top: 0px;
-              "
-              ><i class="fa fa-arrow-left"></i>Back to Map</a
-            >
-            <div class="card">
-              <img
-                class="card-img-top w-100 d-block"
-                src="assets/img/ahhh%20stop.png"
-                style="padding-top: 25px"
-              />
-              <div class="card-body">
-                <h4 class="card-title" style="text-align: center">
-                  Miles Prower
-                </h4>
+            <div class="col-sm-11">
+                <!-- change this URL to link back to map page-->
                 <div>
-                  <a
-                    class="btn btn-primary btn-block text-center"
-                    role="button"
-                    style="
-                      text-align: left;
-                      padding-top: 0;
-                      font-size: 16px;
-                      padding-bottom: 0;
-                      padding-right: 12px;
-                    "
-                    href="http://127.0.0.1:8000/recyclinghistory/"
-                    >Recycling History</a
-                  ><button
-                    class="btn btn-outline-secondary btn-block"
-                    type="button"
-                    style="
-                      text-align: center;
-                      margin: 5px;
-                      margin: auto;
-                      margin-top: 10px;
-                      padding-top: 0px;
-                      padding-bottom: 0px;
-                    "
-                  >
-                    My Tree</button
-                  ><a
-                    class="btn btn-outline-secondary btn-block"
-                    role="button"
-                    style="
-                      text-align: center;
-                      margin: 5px;
-                      margin: auto;
-                      margin-top: 10px;
-                      padding-top: 0px;
-                      padding-bottom: 0px;
-                      background: #d36868;
-                      color: rgb(255, 255, 255);
-                    "
-                    href="Login.html"
-                    >Logout</a
-                  >
+                    <a class="btn btn-primary" href="{% url 'map' %}" role="button">< Back to Map</a>
                 </div>
-              </div>
             </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <img
-                class="card-img-top w-100 d-block"
-                src="assets/img/Progress.png"
-                style="margin-top: 32px"
-              /><a
-                class="text-right"
-                href="legend2.html"
-                style="border-right-color: rgb(0, 0, 0); color: rgb(0, 0, 0)"
-                >View Tree Legend</a
-              >
+            <div class="col-sm-1">
+                <div>
+                    <a class="btn btn-primary" href="{% url 'logout' %}" role="button">Logout</a>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-    <div>
-      <div class="container" id="mytreecon">
-        <p style="font-size: 27px">Estimated number of trees saved</p>
-        <p style="font-size: 32px">Badges</p>
-      </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div>
+                    <h2 class="account-heading">View Legend</h2>
+                    <img class="img-fluid" src="{{ user.profile.image.url }}" />
+                    <p style="margin-top: 23px; font-size: 23px; margin-bottom: 2px">
+                        {{ user.username }}
+                    </p>
+                    <p class="text-sceondary">{{ user.email }}</p>
+
+                    <a class="btn btn-primary btn-block text-center"
+                       role="button"
+                       style="
+            text-align: left;
+            font-size: 16px;
+            padding-right: 107px;
+            background: rgb(6, 126, 195);"
+            href="{% url 'profile' %}">View Profile</a>
+
+             <a class="btn btn-primary btn-block text-center"
+             role="button"
+             style="
+            text-align: left;
+            font-size: 16px;
+            padding-right: 69px;
+            background: rgb(6, 126, 195);
+          "href="{% url 'recycling-history' %}">Recycling History</a>
+
+            <a class="btn btn-primary btn-block text-center"
+            role="button"
+             style="
+            text-align: left;
+            font-size: 16px;
+            padding-right: 100px;
+            background: rgb(162, 162, 162);
+            margin-bottom: 300px;
+          ">View Legend</a>
+
+                </div>
+            </div>
+
+            <div class="col-sm-9">
+
+                <div class="card" style="border-width: 0px">
+                    <img class="card-img-top w-100 d-block"
+                         src="{% static 'img/viewlegend.PNG' %}" />
+                </div>
+            </div>
+        </div>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  </body>
+</body>
+
 </html>
 {% endblock content %}

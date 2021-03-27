@@ -1,94 +1,104 @@
-{% extends "recyclinghistorypage/base.html" %}
-
+﻿{% extends "database/base.html" %}
 {% block content %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <title>Profile - Recycling History</title>
     <style>
-      table,
-      th,
-      td {
-        border: 1px solid black;
-      }
+        table, th, td {
+            border: 1px solid black;
+        }
     </style>
-  </head>
-  <body>
-    <p></p>
+</head>
+<body>
+
     <div class="container">
-      <div class="row">
-        <div class="text-left g-3">
-          <button type="button" class="btn btn-outline-danger border-3 btn-lg">
-            Back to Map
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-3 g-3">
-          <div class="row border border-secondary border-1">
-            <img src="Progress.png" class="img-fluid" />
-            <p class="text-center">Insert photo here</p>
-          </div>
-          <div class="row">
-            <p class="text-center">Insert username here</p>
-          </div>
-          <div class="row">
-            <h1>Recycling History</h1>
-            <p>{{ database_info.first }}</p>
-          </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div>
+                    <h2 class="account-heading">Recycling History</h2>
+                    <img class="img-fluid" src="{{ user.profile.image.url }}" />
+                    <p style="margin-top: 23px; font-size: 23px; margin-bottom: 2px">
+                        {{ user.username }}
+                    </p>
+                    <p class="text-sceondary">{{ user.email }}</p>
 
-          <div class="row g-3">
-            <button
-              type="button"
-              class="btn btn-outline-success border-3 btn-lg"
-            >
-              Add New Entry
-            </button>
-            <a href="http://127.0.0.1:8000/treeinterface/"
-              ><button
-                type="button"
-                class="btn btn-outline-success border-3 btn-lg"
-              >
-                My Tree
-              </button></a
-            >
-          </div>
-        </div>
-        <div class="col-9 g-3">
-          <table
-            class="table table-success table-striped table-bordered border-secondary"
-          >
-            <thead>
-              <tr>
-                <th scope="col">Index</th>
-                <th scope="col">Date</th>
-                <th scope="col">Location</th>
-                <th scope="col">Weight</th>
-                <th scope="col">Waste Category</th>
-              </tr>
+                    <a class="btn btn-primary btn-block text-center"
+                       role="button"
+                       style="
+            text-align: left;
+            font-size: 16px;
+            padding-right: 100px;
+            background: rgb(6, 126, 195);
+          " href="{% url 'profile' %}">My Profile</a>
 
-              {% for info in recycling_info %}
-            </thead>
-            <tbody>
-              <tr>
-                <td>{{ info.index }}</td>
-                <td>{{ info.date }}</td>
-                <td>{{ info.location }}</td>
-                <td>{{ info.weight }}</td>
-                <td>{{ info.waste_category }}</td>
-              </tr>
-            </tbody>
-            {% endfor %}
-            
-          </table>
+                    <a class="btn btn-primary btn-block text-center"
+                       role="button"
+                       style="
+            text-align: left;
+            font-size: 16px;
+            padding-bottom: 0px;
+            padding-right: 50px;
+            background: rgb(162, 162, 162);
+          ">Recycling History</a>
+
+                    <a class="btn btn-primary btn-block text-center"
+                       role="button"
+                       style="
+            text-align: left;
+            font-size: 16px;
+            padding-right: 80px;
+            background: rgb(6, 126, 195);"
+                       href="{% url 'tree-interface' %}">View Legend</a>
+
+                    <a class="btn btn-primary btn-block text-center"
+                       role="button"
+                       style="
+            text-align: left;
+            margin-bottom: 50px;
+            margin-top: 20px;
+            font-size: 16px;
+            padding-right: 50px;
+            background: rgb(6, 126, 195);"
+                       href="{% url 'tree-interface' %}">Add New Entry ></a>
+
+
+
+                </div>
+            </div>
+
+            <div class="col-sm-9">
+                <table class="table table-success table-striped table-bordered border-secondary">
+                    <thead>
+                        <tr>
+                            <th scope="col">Index</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Weight</th>
+                            <th scope="col">Waste Category</th>
+                        </tr>
+                        {% for info in recycling_info %}
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ info.index }}</td>
+                            <td>{{ info.date }}</td>
+                            <td>{{ info.location }}</td>
+                            <td>{{ info.weight }}</td>
+                            <td>{{ info.waste_category }}</td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
-      </div>
-    </div>
-    <script src="js/bootstrap.bundle.min.js"></script>
-  </body>
+
+        <script src="js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
 
 {% endblock content %}
