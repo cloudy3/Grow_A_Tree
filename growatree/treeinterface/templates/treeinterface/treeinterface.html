@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-Profile
+Grow A Tree
 {% endblock %}
 
 {% load crispy_forms_tags %}
@@ -27,7 +27,7 @@ Profile
     <div class="container" style="padding-bottom: 20px">
       <div class="row">
         <div class="col-sm-11">
-          <!-- change this URL to link back to map page-->
+          <!-- Redirects back to Map Page-->
           <div>
             <a class="btn btn-primary" href="{% url 'map' %}" role="button"
               >< Back to Map</a
@@ -36,6 +36,7 @@ Profile
         </div>
         <div class="col-sm-1">
           <div>
+          <!-- Logs out the user-->
             <a class="btn btn-primary" href="{% url 'logout' %}" role="button"
               >Logout</a
             >

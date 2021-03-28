@@ -123,7 +123,9 @@ function initMap() {
       }
       // Shows the Current Selection on the page
       console.log(location);
-      updateButtons(location);
+      updateSelectedLocation(location);
+      // Saves the location selected
+      localStorage.setItem("location", location)
     });
   }
 
@@ -134,6 +136,6 @@ function initMap() {
 }
 
 // Updates Button Text to be the Location name
-function updateButtons(location) {
+function updateSelectedLocation(location) {
   document.getElementById('recycle').getElementsByTagName('p')[0].innerHTML = location;
 }

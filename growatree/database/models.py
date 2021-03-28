@@ -7,7 +7,7 @@ class recyclingInfo(models.Model):
 	recyclingWeight = models.FloatField()
 	location = models.TextField()
 	date = models.DateTimeField(default = timezone.now)
-	badge = models.IntegerField()
+	badge = models.IntegerField() #TODO: Remove this
 	impact = models.IntegerField()
 	tree = models.IntegerField()
 	user = models.ForeignKey(User, on_delete = models.CASCADE)
