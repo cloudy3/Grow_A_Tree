@@ -1,4 +1,4 @@
-﻿{% extends "database/base.html" %}
+{% extends "database/base.html" %}
 
 {% block content %}
 {% load static %}
@@ -78,7 +78,7 @@
                 padding-right: 50px;
                 background: rgb(6, 126, 195);
               "
-              href="{% url 'tree-interface' %}"
+              href="{% url 'recyclingentry_create' %}"
               >Add New Entry ></a
             >
           </div>
@@ -90,21 +90,21 @@
           >
             <thead>
               <tr>
-                <th scope="col">Index</th>
+                <th scope="col">User</th>
                 <th scope="col">Date</th>
                 <th scope="col">Location</th>
-                <th scope="col">Weight</th>
-                <th scope="col">Waste Category</th>
+                <th scope="col">Recycling Type</th>
+                <th scope="col">Recycling Weight</th>
               </tr>
-              {% for info in recycling_info %}
+              {% for info in database_info %}
             </thead>
             <tbody>
               <tr>
-                <td>{{ info.index }}</td>
+                <td>{{ info.user }}</td>
                 <td>{{ info.date }}</td>
                 <td>{{ info.location }}</td>
-                <td>{{ info.weight }}</td>
-                <td>{{ info.waste_category }}</td>
+                <td>{{ info.recyclingType }}</td>
+                <td>{{ info.recyclingWeight }}</td>
               </tr>
             </tbody>
             {% endfor %}
@@ -118,3 +118,4 @@
     </div>
   </body>
 </html>
+
