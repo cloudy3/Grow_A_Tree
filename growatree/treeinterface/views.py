@@ -1,5 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
+
 def TreeInterface(request):
+	"""
+	Renders the Tree Interface
+	"""
 	return render(request, 'treeinterface/treeinterface.html')

@@ -5,6 +5,9 @@ from .models import Profile
 
 
 class UserRegisterForm(UserCreationForm):
+	"""
+	Creates a User Register Form with username, email, password, and verify password fields
+	"""
 	email = forms.EmailField()
 
 	class Meta:
@@ -13,6 +16,9 @@ class UserRegisterForm(UserCreationForm):
 
 
 class UserUpdateForm(forms.ModelForm):
+	"""
+	Creates a User Update Form to update username and email
+	"""
 	email = forms.EmailField()
 
 	class Meta:
@@ -21,6 +27,9 @@ class UserUpdateForm(forms.ModelForm):
 
 
 class ProfileUpdateForm(forms.ModelForm):
+	"""
+	Creates a Profile Update FOrm to update profile image
+	"""
 	class Meta:
 		model = Profile
 		fields = ['image']

@@ -29,7 +29,11 @@ recycling_info = [
 	'waste_category': 'Metal',
 },]
 
+
 def RecyclingHistory(request):
+	"""
+	Queries all the Recycling History and renders teh Recycling History Page
+	"""
 	context = {
 		'recycling_info': recycling_info,
 		'database_info' : recyclingInfo.objects.all()

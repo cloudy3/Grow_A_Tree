@@ -3,20 +3,24 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 from .models import Profile, RecyclingDB
 
+
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
 	if created:
 		Profile.objects.create(user=instance)
 
+
 @receiver(post_save, sender=User)
 def save_profile(sender, instance, **kwargs):
 	instance.profile.save()
+
 
 @receiver(post_save, sender=User)
 def create_recyclingdb(sender, instance, created, **kwargs):
 	if created:
 		RecyclingDB.objects.create(user=instance)
 
+
 @receiver(post_save, sender=User)
 def save_recyclingdb(sender, instance, **kwargs):
-	instance.recyclingdb.save()	
+	instance.recyclingdb.save()

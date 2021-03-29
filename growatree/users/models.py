@@ -5,7 +5,11 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from PIL import Image
 
+
 class Profile(models.Model):
+	"""
+	Creates a Profile Model
+	"""
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
@@ -22,7 +26,11 @@ class Profile(models.Model):
 			img.thumbnail(output_size)
 			img.save(self.image.path)
 
+
 class RecyclingDB(models.Model):
+	"""
+	Creates a Recycling Database Model
+	"""
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	impact = models.PositiveSmallIntegerField(default=0)
 	tree = models.PositiveSmallIntegerField(default=0)
@@ -38,6 +46,9 @@ class RecyclingDB(models.Model):
 
 
 class RecyclingEntry(models.Model):
+	"""
+	Creates a Recycling Entry Model
+	"""
 	user = models.ForeignKey(User, on_delete = models.CASCADE, null=True)
 	recyclingdb = models.ForeignKey(RecyclingDB, on_delete = models.CASCADE, null=True)
 	location = models.TextField(default = "City Hall")

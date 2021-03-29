@@ -17,7 +17,9 @@ var defaultPosition = {
   },
 };
 
-// Switches to E-Waste data after user clicks on E-waste button
+/**
+ * Switches to E-Waste data after user clicks on E-waste button
+ */
 function eWaste() {
   src = "https://geo.data.gov.sg/ewaste/2021/02/19/kml/ewaste.kml";
   console.log("Switched to E-Waste data!");
@@ -25,7 +27,9 @@ function eWaste() {
   mapState = "ewaste";
 }
 
-// Switches to Cash-For-Trash data after user clicks on Cash-For-Trash button
+/**
+ * Switches to Cash-For-Trash data after user clicks on Cash-For-Trash button
+ */
 function cashForTrash() {
   src = "https://geo.data.gov.sg/cashfortrash/2019/02/27/kml/cashfortrash.kml";
   console.log("Switched to Cash-For-Trash data!");
@@ -33,6 +37,9 @@ function cashForTrash() {
   mapState = "cashfortrash";
 }
 
+/**
+ * Switches to Lighting-Waste data after user clicks on Cash-For-Trash button
+ */
 function lightingWaste() {
   src = "https://geo.data.gov.sg/lighting/2019/10/01/kml/lighting.kml";
   console.log("Switched to Lighting-Waste data!");
@@ -40,6 +47,9 @@ function lightingWaste() {
   mapState = "lightingwaste";
 }
 
+/**
+ * Switches to Second-Hand-Goods data after user clicks on Cash-For-Trash button
+ */
 function secondHandGoods() {
   src =
     "https://geo.data.gov.sg/secondhandcollecn/2017/11/30/kml/secondhandcollecn.kml";
@@ -48,12 +58,15 @@ function secondHandGoods() {
   mapState = "secondhandgoods";
 }
 
-// Initialises Google Map
+/**
+ * Initialises Google Maps to user's location and displays all recycling pins
+ */
 function initMap() {
   // Get user's location
   var x = navigator.geolocation;
   x.getCurrentPosition(success, failure);
 
+  // Parses the user's latitude and longitude into Google Maps
   function success(position) {
     console.log("Loaded Successfully!");
 
@@ -85,6 +98,7 @@ function initMap() {
       map: map,
     });
 
+    // Allows all the pins to listen for user's click
     kmlLayer.addListener("click", function (kmlEvent) {
       // Access the description of each marker
       var text = kmlEvent.featureData.description;
@@ -101,6 +115,7 @@ function initMap() {
       var endIndex;
       var location;
 
+      // Obtain pin's location
       if (mapState.localeCompare("ewaste") == 0) {
         startIndex = text.search(BUILDING);
         endIndex = text.search(BLOCK);
@@ -121,6 +136,7 @@ function initMap() {
         location = "";
         console.log("Error getting location of marker!");
       }
+
       // Shows the Current Selection on the page
       console.log(location);
       updateSelectedLocation(location);
@@ -135,7 +151,10 @@ function initMap() {
   }
 }
 
-// Updates Button Text to be the Location name
+/**
+ * Updates location text to be the selected Location
+ * @param {string} location 
+ */
 function updateSelectedLocation(location) {
   document.getElementById('recycle').getElementsByTagName('p')[0].innerHTML = location;
 }

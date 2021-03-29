@@ -6,6 +6,9 @@ from django.conf.urls.static import static
 from users import views as user_views
 
 
+"""
+All the URLs of the application
+"""
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', user_views.register, name='register'),
