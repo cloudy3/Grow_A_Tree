@@ -1,4 +1,4 @@
-﻿{% extends "main/base.html" %}
+﻿{% extends "database/base.html" %}
 
 {% load static %}
 
@@ -24,27 +24,6 @@ Grow A Tree
   </head>
 
   <body>
-    <div class="container" style="padding-bottom: 20px">
-      <div class="row">
-        <div class="col-sm-11">
-          <!-- Redirects back to Map Page-->
-          <div>
-            <a class="btn btn-primary" href="{% url 'map' %}" role="button"
-              >< Back to Map</a
-            >
-          </div>
-        </div>
-        <div class="col-sm-1">
-          <div>
-          <!-- Logs out the user-->
-            <a class="btn btn-primary" href="{% url 'logout' %}" role="button"
-              >Logout</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="container">
       <div class="row">
         <div class="col-sm-3">

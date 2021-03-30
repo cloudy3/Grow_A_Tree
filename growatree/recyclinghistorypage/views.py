@@ -7,7 +7,7 @@ from users.models import RecyclingEntry
 
 def RecyclingHistory(request):
 	"""
-	Queries all the Recycling History and renders teh Recycling History Page
+	Queries all the Recycling Entires and renders the Recycling History Page
 	"""
 	context = {
 		'database_info' : RecyclingEntry.objects.filter(user__username= request.user.username)
