@@ -1,4 +1,5 @@
 from django.contrib import admin
-from .models import recyclingInfo
+from .models import RecyclingInfo
 
-admin.site.register(recyclingInfo)
+
+admin.site.register(RecyclingInfo)

@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models import Count, Q
 from django.utils import timezone
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -51,10 +50,17 @@ class RecyclingEntry(models.Model):
 	"""
 	user = models.ForeignKey(User, on_delete = models.CASCADE, null=True)
 	recyclingdb = models.ForeignKey(RecyclingDB, on_delete = models.CASCADE, null=True)
-	location = models.TextField(default = "City Hall")
-	date = models.DateTimeField(default = timezone.now)
+	location = models.TextField(default="NTU")
+	date = models.DateTimeField(default=timezone.now)
 	recyclingType = models.TextField()
-	recyclingWeight = models.PositiveSmallIntegerField()	
+	recyclingWeight = models.PositiveSmallIntegerField()
+	impact = models.IntegerField(default=1)
 	
 	def get_absolute_url(self):
-		return reverse('database_home')
+		return reverse('recycling-history')
+	
+	def __str__(self):
+		return self.recyclingType 
+
+	class Meta:
+		ordering = ["-date"]

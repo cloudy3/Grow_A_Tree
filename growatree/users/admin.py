@@ -20,7 +20,7 @@ class RecyclingEntryAdmin(admin.ModelAdmin):
 	"""
 	Creates a Recycling Entry Model
 	"""
-	list_display = ('user', 'recyclingdb', 'location', 'date', 'recyclingType', 'recyclingWeight')
+	list_display = ('user', 'recyclingdb', 'location', 'date', 'recyclingType', 'recyclingWeight', 'impact')
 
 
 admin.site.register(Profile, ProfileAdmin)

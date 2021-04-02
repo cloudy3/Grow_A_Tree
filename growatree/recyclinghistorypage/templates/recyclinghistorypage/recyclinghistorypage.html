@@ -77,25 +77,28 @@
           >
             <thead>
               <tr>
-                <th scope="col">User</th>
                 <th scope="col">Date</th>
                 <th scope="col">Location</th>
                 <th scope="col">Recycling Type</th>
                 <th scope="col">Recycling Weight</th>
+                <th scope="col">Impact</th>
               </tr>
               {% for info in database_info %}
             </thead>
             <tbody>
               <tr>
-                <td>{{ info.user }}</td>
                 <td>{{ info.date }}</td>
                 <td>{{ info.location }}</td>
                 <td>{{ info.recyclingType }}</td>
                 <td>{{ info.recyclingWeight }}</td>
+                <td>{{ info.Impact }}</td>
               </tr>
             </tbody>
             {% endfor %}
           </table>
+          <div>
+            <p>Impact = {{ total_impact }}</p>
+        </div>
         </div>
       </div>
 
