@@ -41,9 +41,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'main.apps.MainConfig',
     'rest_framework',
-    'database.apps.DatabaseConfig',
     'users.apps.UsersConfig',
-    'recyclinghistorypage.apps.RecyclinghistorypageConfig',
+    'recyclinghistory.apps.RecyclinghistoryConfig',
     'treeinterface.apps.TreeinterfaceConfig',
     # 'django_extensions',
 ]

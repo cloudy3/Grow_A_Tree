@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from django.db.models import Sum
+from .forms import UserRegisterForm
+from recyclinghistory.models import RecyclingEntry
 
 
 def register(request):
@@ -19,28 +21,32 @@ def register(request):
 		form = UserRegisterForm()
 	return render(request, 'users/register.html', {'form': form, 'title': 'Register'})
 
-
 @login_required
 def profile(request):
 	"""
-	Allows User to update profile
+	Displays User Profile Page
 	"""
-	if request.method == 'POST':
-		u_form = UserUpdateForm(request.POST, instance=request.user)
-		p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-		if u_form.is_valid() and p_form.is_valid():
-			u_form.save()
-			p_form.save()
-			messages.success(request, f'Account updated successfully!')
-			return redirect('profile')
+	totalWeight = RecyclingEntry.objects.filter(user__username= request.user.username).aggregate(Sum('recyclingWeight'))['recyclingWeight__sum']
+
+	def chooseImage(treeSize):
+		if treeSize == 0:
+			return 0
+		elif treeSize < 5:
+			return 1
+		elif treeSize < 25:
+			return 2
+		elif treeSize < 100:
+			return 3
+		return 4
+
+	if totalWeight == None:
+		tree = 0
 	else:
-		u_form = UserUpdateForm(instance=request.user)
-		p_form = ProfileUpdateForm(instance=request.user.profile)
+		tree = totalWeight / 10
 
 	context = {
-		'title': 'Profile',
-		'u_form': u_form,
-		'p_form': p_form	
+		'tree' : tree,
+		'image' : chooseImage(tree)
 	}
-	
-	return render(request, 'users/profile.html', context)	
+
+	return render(request, 'users/profile.html', context)
