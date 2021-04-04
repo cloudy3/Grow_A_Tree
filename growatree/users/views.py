@@ -33,11 +33,25 @@ def profile(request):
 			return 0
 		elif treeSize < 5:
 			return 1
-		elif treeSize < 25:
-			return 2
+		elif treeSize < 10:
+			return 5
+		elif treeSize < 15:
+			return 10
+		elif treeSize <25:
+			return 15
+		elif treeSize < 50:
+			return 25
+		elif treeSize < 75:
+			return 50
+		elif treeSize < 90:
+			return 75
 		elif treeSize < 100:
-			return 3
-		return 4
+			return 90
+		elif treeSize < 125:
+			return 100
+		elif treeSize < 150:
+			return 125
+		return 150
 
 	if totalWeight == None:
 		tree = 0

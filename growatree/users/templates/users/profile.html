@@ -55,18 +55,34 @@
       </div>
     </div>
     <div class="col-sm-9">
-      <!--Insert the tree progress display here-->
-      {% if image == 1 %}
-        <img class="img-fluid" src="{% static 'img/smallestree.PNG' %}" />
-      {% elif image == 2 %}
-        <img class="img-fluid" src="{% static 'img/smalltree.PNG' %}" />
-      {% elif image == 3 %} 
-        <img class="img-fluid" src="{% static 'img/mediumtree.PNG' %}" />
-      {% elif image == 4 %}
-        <img class="img-fluid" src="{% static 'img/bigtree.PNG' %}" />
-      {% else %}
+        <!--Insert the tree progress display here-->
+        {% if image == 1 %}
+        <img class="img-fluid" src="{% static 'img/tree1.PNG' %}" />
+        {% elif image == 5 %}
+        <img class="img-fluid" src="{% static 'img/tree5.PNG' %}" />
+        {% elif image == 10 %}
+        <img class="img-fluid" src="{% static 'img/tree10.PNG' %}" />
+        {% elif image == 15 %}
+        <img class="img-fluid" src="{% static 'img/tree15.PNG' %}" />
+        {% elif image == 25 %}
+        <img class="img-fluid" src="{% static 'img/tree25.PNG' %}" />
+        {% elif image == 50 %}
+        <img class="img-fluid" src="{% static 'img/tree50.PNG' %}" />
+        {% elif image == 75 %}
+        <img class="img-fluid" src="{% static 'img/tree75.PNG' %}" />
+        {% elif image == 90 %}
+        <img class="img-fluid" src="{% static 'img/tree90.PNG' %}" />
+        {% elif image == 100 %}
+        <img class="img-fluid" src="{% static 'img/tree100.PNG' %}" />
+        {% elif image == 110 %}
+        <img class="img-fluid" src="{% static 'img/tree110.PNG' %}" />
+        {% elif image == 125 %}
+        <img class="img-fluid" src="{% static 'img/tree125.PNG' %}" />
+        {% elif image == 150 %}
+        <img class="img-fluid" src="{% static 'img/tree150.PNG' %}" />
+        {% else %}
         <p>Start recycling to grow a tree!</p>
-      {% endif %}
+        {% endif %}
     </div>
   </div>
 </div>
