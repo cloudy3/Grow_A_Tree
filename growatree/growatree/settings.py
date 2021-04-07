@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'recyclinghistory.apps.RecyclinghistoryConfig',
     'treeinterface.apps.TreeinterfaceConfig',
-    # 'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -134,11 +133,3 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
-
-# LOGIN_REDIRECT_URL = '/'
-# LOGOUT_REDIRECT_URL = '/'
-
-# # GDAL config for heroku
-# if 'GEOS_LIBRARY_PATH' in os.environ:
-#     GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH')
-#     GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH')

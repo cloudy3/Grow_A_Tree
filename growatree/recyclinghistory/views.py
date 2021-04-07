@@ -16,6 +16,15 @@ def RecyclingHistory(request):
 
 	return render(request, 'recyclinghistory/recyclinghistory.html', context)
 
+# TODO: Complete this!!!!!!!
+# def UpdateLocation(request):
+#     if request.is_ajax():
+#         message = "Yes, AJAX!"
+#     else:
+#         message = "Not Ajax"
+#     return HttpResponse(message)
+
+
 class RecyclingCreateView(LoginRequiredMixin, CreateView):
 	"""
 	Creates a Recycling Entry Form for user to Recycle
@@ -24,5 +33,9 @@ class RecyclingCreateView(LoginRequiredMixin, CreateView):
 	fields = ['recyclingType', 'recyclingWeight']
 
 	def form_valid(self, form):
+		# Updates user to database
 		form.instance.user = self.request.user
+		# Update location to database
+		form.instance.location = "UPDATED!"
+
 		return super().form_valid(form)
