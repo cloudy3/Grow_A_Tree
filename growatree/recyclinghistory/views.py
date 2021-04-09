@@ -17,12 +17,11 @@ def RecyclingHistory(request):
 	return render(request, 'recyclinghistory/recyclinghistory.html', context)
 
 # TODO: Complete this!!!!!!!
-# def UpdateLocation(request):
-#     if request.is_ajax():
-#         message = "Yes, AJAX!"
-#     else:
-#         message = "Not Ajax"
-#     return HttpResponse(message)
+def UpdateLocation(request):
+	location = request.GET.get('location', None)
+	print("\n\n\n\n" + location)
+
+	return location
 
 
 class RecyclingCreateView(LoginRequiredMixin, CreateView):
