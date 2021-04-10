@@ -14,11 +14,8 @@
         <p>Recycling Location: </p>
       </div>
       <script src={% static "js/recycle.js" %}></script>
-
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script>
-        console.log("Calling Ajax!");
-
         $.ajax({
           url: '{% url "update_location" %}',
           data: {
@@ -28,7 +25,6 @@
           success: console.log("location updated!"),
         });
       </script>
-
       {{ form|crispy }}
     </fieldset>
     <div class="form-group">

@@ -19,9 +19,9 @@ def RecyclingHistory(request):
 # TODO: Complete this!!!!!!!
 def UpdateLocation(request):
 	location = request.GET.get('location', None)
-	print("\n\n\n\n" + location)
+	request.session['location'] = location
 
-	return location
+	return HttpResponse('Location successfully updated!')
 
 
 class RecyclingCreateView(LoginRequiredMixin, CreateView):
@@ -34,7 +34,8 @@ class RecyclingCreateView(LoginRequiredMixin, CreateView):
 	def form_valid(self, form):
 		# Updates user to database
 		form.instance.user = self.request.user
+
 		# Update location to database
-		form.instance.location = "UPDATED!"
+		form.instance.location = self.request.session.get('location', False)
 
 		return super().form_valid(form)
