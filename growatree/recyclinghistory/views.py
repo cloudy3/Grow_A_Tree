@@ -16,8 +16,11 @@ def RecyclingHistory(request):
 
 	return render(request, 'recyclinghistory/recyclinghistory.html', context)
 
-# TODO: Complete this!!!!!!!
+
 def UpdateLocation(request):
+	"""
+	Sends location data to Recycling Entry Form
+	"""
 	location = request.GET.get('location', None)
 	request.session['location'] = location
 
