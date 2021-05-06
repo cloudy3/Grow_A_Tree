@@ -1,5 +1,7 @@
 # Grow A Tree :deciduous_tree:
 A Django Project for our Software Engineering module.
+Project Demo: https://www.youtube.com/watch?v=KH3ZvtOvnTI
+<br>This website incentivise users to recycle by creating a game-like interface for users to recycle at selected locations in Singapore and watch their virtual tree grow.
 
 ---
 
